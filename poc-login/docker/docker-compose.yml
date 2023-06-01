@@ -1,0 +1,48 @@
+version: '2'
+services:
+  poc-login:
+    image: "ubuntu:14.04"
+    container_name: poc-login
+    volumes:
+      - ./../bin/:/usr/local/bin/
+      - /etc/ssl/certs:/etc/ssl/certs
+      - ./../configuration/:/etc/hasemeneh/app/configs/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - poc-login-db
+      - poc-login-cache
+    links:
+      - poc-login-db
+      - poc-login-cache
+    command: tail -f /dev/null
+    environment:
+      - TZ=Asia/Jakarta
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+
+  poc-login-db:
+    image: mysql:5.7
+    container_name: poc-login-db
+    volumes:
+      - /docker/poc-login-db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: poc-login-db
+      MYSQL_USER: poc-login
+      MYSQL_PASSWORD: poc-login
+      TZ: Asia/Jakarta
+    ports:
+      - "3307:3306"
+
+
+  poc-login-cache:
+    image: redis:alpine
+    container_name: poc-login-cache
+    volumes:
+      - /docker/poc-login-caches:/data
+    environment: 
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "6380:6379"

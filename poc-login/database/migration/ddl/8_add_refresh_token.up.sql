@@ -1,0 +1,7 @@
+CREATE TABLE `rbac_refresh_token` ( 
+`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT , 
+`user_id` INT UNSIGNED NOT NULL , 
+`token` VARCHAR(255) NOT NULL , 
+`expires_at` TIMESTAMP NOT NULL , 
+`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+PRIMARY KEY (`id`), INDEX (`user_id`), INDEX (`token`)) ENGINE = InnoDB;

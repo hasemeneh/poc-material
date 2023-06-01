@@ -1,0 +1,1 @@
+ALTER TABLE `rbac_user` ADD `password` VARBINARY(255) NOT NULL AFTER `auth_id`;

@@ -1,0 +1,15 @@
+{
+    "app_config":{
+        "secret":"KyxNJS4wZMVOmausmm9BpYjcRx0Jhyyi"
+    },
+    "db_connection":{
+        "master":"poc-pricing:poc-pricing@tcp(poc-pricing-db:3306)/poc-pricing-db?parseTime=true&loc=Local",
+        "slave":"poc-pricing:poc-pricing@tcp(poc-pricing-db:3306)/poc-pricing-db?parseTime=true&loc=Local"
+    },
+
+    "cache_connection" :{
+        "cache_address":"poc-pricing-cache:6379",
+        "cache_password":""
+    },
+    "rest_port":"0.0.0.0:8080"
+}

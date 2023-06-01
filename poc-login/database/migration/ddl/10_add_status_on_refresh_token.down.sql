@@ -1,0 +1,1 @@
+ALTER TABLE `rbac_refresh_token` DROP `status`;

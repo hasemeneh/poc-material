@@ -1,0 +1,1 @@
+ALTER TABLE `rbac_user` DROP `password`;

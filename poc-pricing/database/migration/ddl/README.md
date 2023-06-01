@@ -1,0 +1,1 @@
+### [Docs](https://github.com/golang-migrate/migrate/blob/master/MIGRATIONS.md)

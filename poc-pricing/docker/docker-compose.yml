@@ -1,0 +1,48 @@
+version: '2'
+services:
+  poc-pricing:
+    image: "ubuntu:14.04"
+    container_name: poc-pricing
+    volumes:
+      - ./../bin/:/usr/local/bin/
+      - /etc/ssl/certs:/etc/ssl/certs
+      - ./../configuration/:/etc/hasemeneh/app/configs/
+    ports:
+      - "8081:8080"
+    depends_on:
+      - poc-pricing-db
+      - poc-pricing-cache
+    links:
+      - poc-pricing-db
+      - poc-pricing-cache
+    command: tail -f /dev/null
+    environment:
+      - TZ=Asia/Jakarta
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+
+  poc-pricing-db:
+    image: mysql:5.7
+    container_name: poc-pricing-db
+    volumes:
+      - /docker/poc-pricing-db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: poc-pricing-db
+      MYSQL_USER: poc-pricing
+      MYSQL_PASSWORD: poc-pricing
+      TZ: Asia/Jakarta
+    ports:
+      - "3308:3306"
+
+
+  poc-pricing-cache:
+    image: redis:alpine
+    container_name: poc-pricing-cache
+    volumes:
+      - /docker/poc-pricing-caches:/data
+    environment: 
+      ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "6381:6379"

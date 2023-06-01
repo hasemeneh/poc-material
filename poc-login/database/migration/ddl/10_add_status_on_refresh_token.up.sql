@@ -1,0 +1,1 @@
+ALTER TABLE `rbac_refresh_token` ADD `status` ENUM('ACTIVE','EXPIRED') NOT NULL AFTER `token`;
