@@ -9,14 +9,14 @@ import (
 type module struct {
 	Cfg        *config.MainConfig
 	UserRepo   repository.User
-	permission repository.Permission
+	permission repository.Customer
 	role       repository.Role
 	token      repository.Token
 }
 type Args struct {
 	Cfg        *config.MainConfig
 	UserRepo   repository.User
-	Permission repository.Permission
+	Permission repository.Customer
 	Role       repository.Role
 	Token      repository.Token
 }

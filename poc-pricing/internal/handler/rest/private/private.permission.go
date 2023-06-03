@@ -21,7 +21,7 @@ func (p *Private) HandleGetPermissions(w http.ResponseWriter, r *http.Request) r
 
 func (p *Private) HandleAddPermissions(w http.ResponseWriter, r *http.Request) response.HTTPResponse {
 	token := strings.Replace(r.Header.Get(constants.AuthHeaderKey), constants.AuthPrefix, "", 1)
-	req := &models.Permission{}
+	req := &models.Customer{}
 	err := json.NewDecoder(r.Body).Decode(req)
 	if err != nil {
 		return response.NewJSONResponse().SetError(response.ErrorBadRequest).SetMessage(err.Error())
@@ -35,7 +35,7 @@ func (p *Private) HandleAddPermissions(w http.ResponseWriter, r *http.Request) r
 
 func (p *Private) HandleUpdatePermissions(w http.ResponseWriter, r *http.Request) response.HTTPResponse {
 	token := strings.Replace(r.Header.Get(constants.AuthHeaderKey), constants.AuthPrefix, "", 1)
-	req := &models.Permission{}
+	req := &models.Customer{}
 	err := json.NewDecoder(r.Body).Decode(req)
 	if err != nil {
 		return response.NewJSONResponse().SetError(response.ErrorBadRequest).SetMessage(err.Error())

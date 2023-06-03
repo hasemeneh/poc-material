@@ -18,7 +18,7 @@ func (m *module) GetPermission(ctx context.Context, queries url.Values, token st
 	return m.permission.GetPermissionForInternal(ctx, queries)
 }
 
-func (m *module) AddPermission(ctx context.Context, req *models.Permission, token string) error {
+func (m *module) AddPermission(ctx context.Context, req *models.Customer, token string) error {
 	err := m.IsValidUser(ctx, token, constants.IntoolsPermissionCodePermissionsAdd)
 	if err != nil {
 		return err
@@ -27,7 +27,7 @@ func (m *module) AddPermission(ctx context.Context, req *models.Permission, toke
 	return m.permission.AddPermission(ctx, req)
 }
 
-func (m *module) UpdatePermission(ctx context.Context, req *models.Permission, token string) error {
+func (m *module) UpdatePermission(ctx context.Context, req *models.Customer, token string) error {
 	err := m.IsValidUser(ctx, token, constants.IntoolsPermissionCodePermissionsUpdate)
 	if err != nil {
 		return err

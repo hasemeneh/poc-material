@@ -70,7 +70,7 @@ func (m *module) UpdateRolePermission(ctx context.Context, token string, req *mo
 	return m.permission.ChangeRolePermissionStatus(ctx, req.Status, req.RoleID, req.PermissionID)
 }
 
-func (m *module) GetPermissionByRole(ctx context.Context, roleID int64, token string) ([]*models.Permission, error) {
+func (m *module) GetPermissionByRole(ctx context.Context, roleID int64, token string) ([]*models.Customer, error) {
 	err := m.IsValidUser(ctx, token, constants.IntoolsPermissionCodeRolePermissionView)
 	if err != nil {
 		return nil, err

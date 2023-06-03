@@ -7,12 +7,12 @@ import (
 
 type module struct {
 	user       repository.User
-	permission repository.Permission
+	permission repository.Customer
 	role       repository.Role
 }
 type Args struct {
 	User       repository.User
-	Permission repository.Permission
+	Permission repository.Customer
 	Role       repository.Role
 }
 

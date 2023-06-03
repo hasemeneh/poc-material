@@ -21,7 +21,7 @@ type Interface struct {
 }
 type Domain struct {
 	User       repository.User
-	Permission repository.Permission
+	Permission repository.Customer
 	Role       repository.Role
 	Token      repository.Token
 }

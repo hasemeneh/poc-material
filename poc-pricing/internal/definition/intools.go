@@ -10,8 +10,8 @@ import (
 
 type Intools interface {
 	GetPermission(ctx context.Context, queries url.Values, token string) (*pagespecifier.IntoolsResponse, error)
-	AddPermission(ctx context.Context, req *models.Permission, token string) error
-	UpdatePermission(ctx context.Context, req *models.Permission, token string) error
+	AddPermission(ctx context.Context, req *models.Customer, token string) error
+	UpdatePermission(ctx context.Context, req *models.Customer, token string) error
 
 	GetRole(ctx context.Context, queries url.Values, token string) (*pagespecifier.IntoolsResponse, error)
 	UpdateRole(ctx context.Context, token string, req *models.InternalRole) error
@@ -19,7 +19,7 @@ type Intools interface {
 
 	AddPermissionToRole(ctx context.Context, token string, req *models.InternalRolePermission) error
 	UpdateRolePermission(ctx context.Context, token string, req *models.InternalRolePermission) error
-	GetPermissionByRole(ctx context.Context, roleID int64, token string) ([]*models.Permission, error)
+	GetPermissionByRole(ctx context.Context, roleID int64, token string) ([]*models.Customer, error)
 
 	GetUser(ctx context.Context, queries url.Values, token string) (*pagespecifier.IntoolsResponse, error)
 	AddUserAccess(ctx context.Context, req *models.UserAccess, token string) error
